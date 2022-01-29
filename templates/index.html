@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fare Predictor</title>
+    <script>
+        function ddlselect(id1, id2){
+        var d = document.getElementById(id1);
+        var displayText = d.options[d.selectedIndex].text;
+        document.getElementById(id2).value = displayText;
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h1 align="center">Flight Price Predictor</h1>
+    <form action="/predict" method="post">
+        <div align="center">
+            <label for="airline">Select Airline</label>
+            <select id="select_airplane" onchange="ddlselect('select_airplane', 'air');" class="form-select" name="_Airlines_" aria-label="Default select example" id="airline">
+                <option selected>Air India</option>
+                <option value="2">GoAir</option>
+                <option value="3">IndiGo</option>
+                <option value="4">SpiceJet</option>
+                <option value="5">Vistara</option>
+                <option value="6">Other</option>
+            </select>
+            <input type="text" id="air" name="airplane_wala">
+
+        </div>
+
+        <br>
+
+        <div align="center">
+            <label for="from">From: </label>
+            <select class="form-select" aria-label="Default select example" id="from" onchange="ddlselect('from', 'source');">
+                <option selected>Delhi</option>
+                <option value="2">Kolkata</option>
+                <option value="3">Chennai</option>
+                <option value="4">Mumbai</option>
+                <option value="4">Banglore</option>
+            </select>
+            <input type="text" id="source" name="source_wala">
+        </div>
+
+        <br>
+
+        <div align="center">
+            <label for="to">To: </label>
+            <select class="form-select" aria-label="Default select example" id="to", onchange="ddlselect('to','destination');">
+                <option selected>Cochin</option>
+                <option value="2">Kolkata</option>
+                <option value="3">Delhi</option>
+                <option value="4">Hyderabad</option>
+                <option value="4">Bangalore</option>
+            </select>
+            <input type="text" id="destination" name="destination_wala">
+        </div>
+
+        <br>
+
+        <div align="center">
+            <label for="time">Time: </label>
+            <select class="form-select" aria-label="Default select example" id="time" onchange="ddlselect('time','time_of');">
+                <option selected>morning</option>
+                <option value="2">afternoon</option>
+                <option value="3">evening</option>
+            </select>
+            <input type="text" id="time_of" name="time_wala">
+        </div>
+
+        <br>
+
+        <div align="center">
+            <label for="day">Day: </label>
+            <select class="form-select" aria-label="Default select example" id="day" onchange="ddlselect('day','days');">
+                <option selected>weekday</option>
+                <option value="2">weekend</option>
+            </select>
+            <input type="text" id="days" name="day_wala">
+        </div>
+
+        <br>
+
+        <div align="center">
+            <form action="/">
+                <input type="submit" value="Get Price">
+            </form>
+        </div>
+    </form>
+
+    <br>
+
+    <h2>Fare price is : ₹{{prediction}}</h2>
+
+
+
+</body>
+
+</html>
